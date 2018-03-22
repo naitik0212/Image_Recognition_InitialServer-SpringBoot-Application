@@ -1,17 +1,13 @@
 package com.cloud.initialserver;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import javax.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "/cloudimagerecognition", produces = MediaType.APPLICATION_JSON_VALUE)
-@EntityScan
 @CrossOrigin(origins = "*")
 public class RequestController {
 
@@ -33,7 +29,7 @@ public class RequestController {
 
         requestAns.setUrl(imageUrl);
         requestAns = repository.save(requestAns);      //save url,id to database
-        String id = requestAns.getId();
+        String id = String.valueOf(requestAns.getId());
         String sqsUrl = requestAns.getUrl();        // get url and id
 
         String sqsMessage = id + "__" + sqsUrl;

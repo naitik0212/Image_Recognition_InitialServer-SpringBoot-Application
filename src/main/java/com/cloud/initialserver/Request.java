@@ -7,22 +7,22 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "requestTable")
+@Table(name = "request")
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
     @NotNull
     private String url;
     private String identifiedImage;
     @CreationTimestamp
     private Timestamp timestamp;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
