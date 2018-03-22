@@ -24,8 +24,8 @@ public class Producer {
     private ObjectMapper objectMapper;
 
 
-    private void sendToQueueA(String message) {
-        send(requestQueue, message);
+    private void sendToQueueA(String sqsMessage) {
+        send(requestQueue, sqsMessage);
     }
 
     private <MESSAGE extends Serializable> void send(String queue, MESSAGE payload) {
@@ -45,7 +45,6 @@ public class Producer {
     }
 
 
-    @PostConstruct
     public void sendMessages(String sqsMessage) {
         sendToQueueA(sqsMessage);
     }
