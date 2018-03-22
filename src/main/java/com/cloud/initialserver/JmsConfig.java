@@ -1,30 +1,30 @@
 package com.cloud.initialserver;
 
 
-        import com.amazon.sqs.javamessaging.SQSConnection;
-        import com.amazon.sqs.javamessaging.SQSConnectionFactory;
-        import com.amazonaws.auth.AWSStaticCredentialsProvider;
-        import com.amazonaws.auth.BasicAWSCredentials;
-        import com.amazonaws.regions.Region;
-        import com.amazonaws.regions.Regions;
-        import com.fasterxml.jackson.annotation.JsonInclude;
-        import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.beans.factory.annotation.Value;
-        import org.springframework.context.annotation.Bean;
-        import org.springframework.context.annotation.Configuration;
-        import org.springframework.context.annotation.PropertySource;
-        import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-        import org.springframework.jms.annotation.EnableJms;
-        import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
-        import org.springframework.jms.core.JmsTemplate;
-        import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
-        import org.springframework.jms.support.converter.MessageConverter;
-        import org.springframework.jms.support.converter.MessageType;
-        import org.springframework.jms.support.destination.DynamicDestinationResolver;
+import com.amazon.sqs.javamessaging.SQSConnection;
+import com.amazon.sqs.javamessaging.SQSConnectionFactory;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
+import org.springframework.jms.support.destination.DynamicDestinationResolver;
 
-        import javax.jms.JMSException;
-        import javax.jms.Session;
+import javax.jms.JMSException;
+import javax.jms.Session;
 
 @EnableJms
 @Configuration
