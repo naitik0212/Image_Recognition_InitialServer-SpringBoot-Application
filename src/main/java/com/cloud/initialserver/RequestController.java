@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping(value = "/cloudimagerecognition", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "*")
@@ -24,7 +22,10 @@ public class RequestController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public String receiveUserURL(@RequestParam(value = "input") String imageUrl) throws IOException {
+    public String receiveUserURL(@RequestParam(value = "input") String imageUrl) {
+        if (imageUrl == null) {
+            return "Image URL is required";
+        }
         Request requestAns = new Request();         //model
 
         requestAns.setUrl(imageUrl);
