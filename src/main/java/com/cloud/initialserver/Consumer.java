@@ -3,20 +3,19 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Hashtable;
 
 @Component
 public class Consumer {
 
-    public static Map<String, String> finalMap = new HashMap<>();
+    public static Hashtable<String, String> finalTable = new Hashtable<>();
 
     @JmsListener(destination = "${amazonProperties.responseQueue}")
     public void processMessage(String msg) throws IOException {
         //parse the message
-        String imageaAnswer= msg.split("__")[1];
+        String imageAnswer= msg.split("__")[1];
         String id = msg.split("__")[0];
 
-        finalMap.put(id,imageaAnswer);
+        finalTable.put(id,imageAnswer);
     }
 }
