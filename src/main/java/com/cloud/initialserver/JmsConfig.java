@@ -52,7 +52,7 @@ public class JmsConfig {
                 = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(this.connectionFactory);
         factory.setDestinationResolver(new DynamicDestinationResolver());
-        factory.setConcurrency("1-100");
+        factory.setConcurrency("1-20000");
         factory.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
         factory.setMessageConverter(messageConverter());
         return factory;
