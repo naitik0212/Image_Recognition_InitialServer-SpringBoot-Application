@@ -11,12 +11,9 @@ public class RequestController {
 
     private final Producer producer;
 
-    private final RequestRepository repository;
-
     @Autowired
-    public RequestController(Producer producer, RequestRepository repository) {
+    public RequestController(Producer producer) {
         this.producer = producer;
-        this.repository = repository;
     }
 
 
@@ -26,22 +23,18 @@ public class RequestController {
         if (imageUrl == null) {
             return "Image URL is required";
         }
-        Request requestAns = new Request();         //model
-
-        requestAns.setUrl(imageUrl);
-        requestAns = repository.save(requestAns);      //save url,id to database
-        String id = String.valueOf(requestAns.getId());
-        String sqsUrl = requestAns.getUrl();        // get url and id
-
-        String sqsMessage = id + "__" + sqsUrl;
-        producer.sendMessages(sqsMessage);          //send to producer
+        String id = String.valueOf(generateNumber());
+        String sqsMessage = id + "__" + imageUrl;
+        producer.sendMessages(sqsMessage);
 
         while (true) {
             if(Consumer.finalMap.containsKey(id)) {
-                requestAns.setIdentifiedImage(Consumer.finalMap.get(id));
-                repository.save(requestAns);
                 return Consumer.finalMap.get(id);
             }
         }
+    }
+
+    private long generateNumber() {
+        return (long)(Math.random()*100000 + 3333300000L);
     }
 }
