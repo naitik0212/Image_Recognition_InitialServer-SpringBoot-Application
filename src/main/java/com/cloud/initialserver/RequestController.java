@@ -28,8 +28,10 @@ public class RequestController {
         producer.sendMessages(sqsMessage);
 
         while (true) {
-            if(Consumer.finalMap.containsKey(id)) {
-                return Consumer.finalMap.get(id);
+            if(Consumer.finalTable.containsKey(id)) {
+                String result = Consumer.finalTable.get(id);
+                Consumer.finalTable.remove(id);
+                return result;
             }
         }
     }
