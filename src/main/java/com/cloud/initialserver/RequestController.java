@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "/cloudimagerecognition", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "*")
@@ -15,7 +19,6 @@ public class RequestController {
     public RequestController(Producer producer) {
         this.producer = producer;
     }
-
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
