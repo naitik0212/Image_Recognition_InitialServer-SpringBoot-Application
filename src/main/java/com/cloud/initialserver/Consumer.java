@@ -12,6 +12,7 @@ public class Consumer {
 
     @JmsListener(destination = "${amazonProperties.responseQueue}")
     public void processMessage(String msg) throws IOException {
+        System.out.println("Response recvd: " + msg);
         //parse the message
         String imageAnswer= msg.split("__")[1];
         String id = msg.split("__")[0];
